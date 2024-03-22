@@ -8,10 +8,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class LoginTest extends BaseTestCases {
-    private String validMail = "ha304389@gmail.com";
-    private String invalidMail = "ka84@gmail.com";
-    private String validPassword = "pass1234";
-    private String invalidPassword = "bv1244";
+
     @Test
     public void TC_addToCart_00()
     {
