@@ -10,7 +10,7 @@ public class PropertiesUtils {
         try {
             InputStream inputstream = new FileInputStream(file);
             property.load(inputstream);
-            //inputstream.close();
+            inputstream.close();
         } catch (FileNotFoundException ex) {
             System.out.println("error in file not found");
         } catch (IOException ex) {

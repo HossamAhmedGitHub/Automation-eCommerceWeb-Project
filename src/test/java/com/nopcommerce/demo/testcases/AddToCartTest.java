@@ -7,13 +7,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class AddToCartTest extends BaseTestCases {
-    /*@Test
-    public void fillEmailPassword()
-    {
-        LoginPage loginObject = new LoginPage(driver);
-        loginObject.load().login(ConfigUtliities.createInstance().getEmail(), ConfigUtliities.createInstance().getPassword());
-    }*/
-    @Test//(dependsOnMethods = "fillEmailPassword")
+    @Test
     public void TC_addToCart_01() throws InterruptedException {
         LoginPage loginObject = new LoginPage(driver);
         loginObject.load().login(ConfigUtliities.createInstance().getEmail(), ConfigUtliities.createInstance().getPassword());
@@ -26,7 +20,7 @@ public class AddToCartTest extends BaseTestCases {
         Assert.assertTrue(cartpage.isHTCAdded());
     }//end TC_addToCart_01()
 
-    @Test(priority = 2)
+    @Test
     public void TC_addToCart_02() throws InterruptedException {
         LoginPage loginObject = new LoginPage(driver);
         HomePage homePage = loginObject.load().login(ConfigUtliities.createInstance().getEmail(), ConfigUtliities.createInstance().getPassword());
@@ -46,7 +40,7 @@ public class AddToCartTest extends BaseTestCases {
         Assert.assertTrue(cartpage.isLenovoAdded()&&cartpage.isNikeShoesAdded());
         Thread.sleep(1000);
     }//end TC_addToCart_02()
-    @Test(priority = 3)
+    @Test
     public void TC_addToCart_03() throws InterruptedException {
         LoginPage loginObject = new LoginPage(driver);
         HomePage homePage = loginObject.load().login(ConfigUtliities.createInstance().getEmail(), ConfigUtliities.createInstance().getPassword());
@@ -54,7 +48,7 @@ public class AddToCartTest extends BaseTestCases {
         CartPage cartpage = homePage.cartPageLinkClick().deleteNikeLenovoItems();
         Assert.assertFalse(cartpage.areLenoveNikeItemexist());
     }//end TC_addToCart_03()
-    @Test(priority = 4)
+    @Test
     public void TC_addToCart_04() throws InterruptedException
     {
         LoginPage loginObject = new LoginPage(driver);
@@ -68,7 +62,7 @@ public class AddToCartTest extends BaseTestCases {
         Thread.sleep(2000);
         Assert.assertTrue(nikeflorapage.isErrorMessageDisplayed());
     }//end TC_addToCart_04()
-    @Test(priority = 5)
+    @Test
     public void TC_addToCart_05() throws InterruptedException
     {
         LoginPage loginObject = new LoginPage(driver);
@@ -85,7 +79,7 @@ public class AddToCartTest extends BaseTestCases {
         Assert.assertTrue(cartpage.isNikeFloralItemDisplayed());
         Thread.sleep(2000);
     }//end TC_addToCart_05()
-    @Test(priority = 6)
+    @Test
     public void TC_addToCart_06() throws InterruptedException
     {
         LoginPage loginObject = new LoginPage(driver);
@@ -114,7 +108,7 @@ public class AddToCartTest extends BaseTestCases {
         CheckoutCompletedPage checkout = confirmOrder.confirmClick();
         Assert.assertTrue(checkout.isSucessMessageDisplayed());
     }//end TC_addToCart_06()
-    @Test(priority = 7)
+    @Test
     public void TC_addToCart_07() throws InterruptedException
     {
         LoginPage loginObject = new LoginPage(driver);
