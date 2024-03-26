@@ -1,10 +1,12 @@
 package com.nopcommerce.demo.pages;
 
 import com.nopcommerce.demo.base.BasePage;
+import io.qameta.allure.Feature;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+
 
 public class CartPage extends BasePage {
     public CartPage(WebDriver driver) {

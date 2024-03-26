@@ -3,19 +3,21 @@ package com.nopcommerce.demo.testcases;
 import com.nopcommerce.demo.base.BaseTestCases;
 import com.nopcommerce.demo.pages.HomePage;
 import com.nopcommerce.demo.pages.LoginPage;
-import com.nopcommerce.demo.utilities.ConfigUtliities;
+
+import static com.nopcommerce.demo.utilities.ConfigUtliities.createInstance;
+
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class LoginTest extends BaseTestCases {
 
-    @Test
+    @Test(description = "verify login _FUNC with valid email and password")
     public void TC_addToCart_00()
     {
         LoginPage loginObject = new LoginPage(driver);
         boolean status = loginObject
                 .load()
-                .login(ConfigUtliities.createInstance().getEmail(), ConfigUtliities.createInstance().getPassword())
+                .login(createInstance().getEmail(), createInstance().getPassword())
                 .loginVerification();
         Assert.assertTrue(status);
     }//end TC_addToCart_00()

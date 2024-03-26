@@ -35,7 +35,6 @@ public class LoginPage extends BasePage {
         emailInputField.sendKeys(email);
         passwordInputField.sendKeys(password);
         loginButton.click();
-        System.out.println("login success");
         return new HomePage(driver);
     }
 
