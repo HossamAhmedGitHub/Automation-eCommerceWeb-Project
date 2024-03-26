@@ -21,25 +21,22 @@ public class AddToCartTest extends BaseTestCases {
         Assert.assertTrue(cartpage.isHTCAdded());
     }//end TC_addToCart_01()
 
-    @Test(enabled = false, description = "verify add to cart  _FUNC when adding multiple items to the cart, the various items must be added to the cart")
+    @Test(enabled = true, description = "verify add to cart  _FUNC when adding multiple items to the cart, the various items must be added to the cart")
     public void TC_addToCart_02() throws InterruptedException {
-        LoginPage loginObject = new LoginPage(driver);
-        HomePage homePage = loginObject.load().login(ConfigUtliities.createInstance().getEmail(), ConfigUtliities.createInstance().getPassword());
-        Thread.sleep(500);
-        NikeShoesPage nikeshoes =homePage
+        Utils.navigateTo(driver , ConfigUtliities.createInstance().getHomeURL());
+        new HomePage(driver)
                 .apparelIconClick()
                 .shoesIconClick()
                 .nikeIconClick()
                 .addToCartNikeItemButtonClick();
-        Thread.sleep(1000);
-        LenovoPCPage lenovopcpage= homePage
+        Utils.navigateTo(driver , ConfigUtliities.createInstance().getHomeURL());
+        LenovoPCPage lenovopcpage= new HomePage(driver)
                 .computerIcon()
                 .desktopIconClick()
                 .lenovoItemIconClick()
                 .lenovoPageAddtocartButtonClick();
         CartPage cartpage =lenovopcpage.lenovoPageAddtocartPageLinkClick();
-        Assert.assertTrue(cartpage.isLenovoAdded()&&cartpage.isNikeShoesAdded());
-        Thread.sleep(1000);
+        Assert.assertTrue(cartpage.isLenovoAdded() && cartpage.isNikeShoesAdded());
     }//end TC_addToCart_02()
     @Test(enabled = true, description = "verify when clicking 'remove' item buton in the shopping cart page, item is deleted")
     public void TC_addToCart_03() throws InterruptedException {
