@@ -3,6 +3,7 @@ package com.nopcommerce.demo.testcases;
 import com.nopcommerce.demo.base.BaseTestCases;
 import com.nopcommerce.demo.pages.*;
 import com.nopcommerce.demo.utilities.ConfigUtliities;
+import com.nopcommerce.demo.utilities.Utils;
 import io.qameta.allure.Feature;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -10,8 +11,7 @@ import org.testng.annotations.Test;
 public class AddToCartTest extends BaseTestCases {
     @Test(description = "verify add to cart button _FUNC when clicking on it, the item must be added to the cart")
     public void TC_addToCart_01() throws InterruptedException {
-        LoginPage loginObject = new LoginPage(driver);
-        loginObject.load().login(ConfigUtliities.createInstance().getEmail(), ConfigUtliities.createInstance().getPassword());
+        Utils.navigateTo(driver , ConfigUtliities.createInstance().getHomeURL());
         HtcOneMiniBluePage htcPage = new HomePage(driver)
                 .electronicsIconClick()
                 .cellPhonesClick()
