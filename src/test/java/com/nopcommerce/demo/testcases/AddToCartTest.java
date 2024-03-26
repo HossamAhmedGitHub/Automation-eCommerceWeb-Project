@@ -62,13 +62,10 @@ public class AddToCartTest extends BaseTestCases {
                 .nikeFloralAddtocartButtonClick();
         Assert.assertTrue(nikeflorapage.isErrorMessageDisplayed());
     }//end TC_addToCart_04()
-    @Test(enabled = false, description = "veify Adding Item to the shopping cart with different  configurations when setting the configurations, the item is added to cart")
-    public void TC_addToCart_05() throws InterruptedException
-    {
-        LoginPage loginObject = new LoginPage(driver);
-        HomePage homePage = loginObject.load().login(ConfigUtliities.createInstance().getEmail(), ConfigUtliities.createInstance().getPassword());
-        Thread.sleep(500);
-        NikeFloralPage nikeflorapage = homePage
+    @Test(enabled = true, description = "veify Adding Item to the shopping cart with different  configurations when setting the configurations, the item is added to cart")
+    public void TC_addToCart_05(){
+        Utils.navigateTo(driver , ConfigUtliities.createInstance().getHomeURL());
+        NikeFloralPage nikeflorapage = new HomePage(driver)
                 .apparelIconClick()
                 .shoesIconClick()
                 .nikeFloralIconClick();
@@ -77,7 +74,6 @@ public class AddToCartTest extends BaseTestCases {
                .nikeFloralAddtocartButtonClick()
                .addtocartPageLinkClick();
         Assert.assertTrue(cartpage.isNikeFloralItemDisplayed());
-        Thread.sleep(2000);
     }//end TC_addToCart_05()
     @Test(enabled = false,description = "verify CHECKOUT _FUNC when user does a checkout with filling all the required data, checkout is done.")
     public void TC_addToCart_06() throws InterruptedException
