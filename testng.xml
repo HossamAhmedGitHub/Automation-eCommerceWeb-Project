@@ -11,7 +11,7 @@
 
             <class name="com.nopcommerce.demo.testcases.LoginTest">
                 <methods>
-                  <include name="TC_addToCart_00"/>
+                  <include name="TC_login_01"/>
                 </methods>
             </class>
 

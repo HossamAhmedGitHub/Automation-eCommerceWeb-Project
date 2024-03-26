@@ -30,4 +30,17 @@ public class ConfigUtliities {
     public String getHomeURL(){
         return data.getProperty("homeURL");
     }
+    public String getCity(){
+        return data.getProperty("city");
+    }
+    public String getAddress1(){
+        return data.getProperty("address1");
+    }
+    public String getPhoneNumber(){
+        return data.getProperty("phoneNumber");
+    }
+    public String getZip(){
+        return data.getProperty("zip");
+    }
+
 }

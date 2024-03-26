@@ -1,6 +1,7 @@
 package com.nopcommerce.demo.pages;
 
 import com.nopcommerce.demo.base.BasePage;
+import com.nopcommerce.demo.utilities.ConfigUtliities;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -11,6 +12,8 @@ public class BillingPage extends BasePage {
     public BillingPage(WebDriver driver) {
         super(driver);
     }
+    @FindBy(css=".edit-address")
+    private WebElement editAddressForm;
     @FindBy(css="[data-trigger='country-select']")
     private WebElement country;
     @FindBy(id="BillingNewAddress_City")
@@ -43,12 +46,9 @@ public class BillingPage extends BasePage {
         this.address1.sendKeys(address);
         return this;
     }
-    public BillingPage setCountry() throws InterruptedException {
-        Thread.sleep(1000);
+    public BillingPage setCountry()  {
         Select countries = new Select(country);
         countries.selectByIndex(5);
-        Thread.sleep(1000);
-
         return this;
     }
     public BillingPage fillZip(String zip)
@@ -66,6 +66,16 @@ public class BillingPage extends BasePage {
         continueButton.click();
         return new ShippingMethodPage(driver);
     }
+    public ShippingMethodPage fillingBillingForm(){
+            setCountry()
+                    .fillCity(ConfigUtliities.createInstance().getCity())
+                    .fillAddress1(ConfigUtliities.createInstance().getAddress1())
+                    .fillZip(ConfigUtliities.createInstance().getZip())
+                    .fillPhone(ConfigUtliities.createInstance().getPhoneNumber())
+                    .continueButtonClick();
+        return new ShippingMethodPage(driver);
+    }//end fillingBillingForm()
+
 
 
 
