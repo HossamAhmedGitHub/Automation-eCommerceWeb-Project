@@ -35,7 +35,7 @@ public class DriverFactory {
                 throw new RuntimeException("error in entered browser type");
         }//end switch()
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10)); // global implicit
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5)); // global implicit
         return driver;
     }
 }

@@ -4,9 +4,9 @@ import com.nopcommerce.demo.base.BaseTestCases;
 import com.nopcommerce.demo.pages.*;
 import com.nopcommerce.demo.utilities.ConfigUtliities;
 import com.nopcommerce.demo.utilities.Utils;
-import io.qameta.allure.Feature;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
 public class AddToCartTest extends BaseTestCases {
     @Test(description = "verify add to cart button _FUNC when clicking on it, the item must be added to the cart")
@@ -27,7 +27,7 @@ public class AddToCartTest extends BaseTestCases {
         new HomePage(driver)
                 .apparelIconClick()
                 .shoesIconClick()
-                .nikeIconClick()
+                .nikeSBIconClick()
                 .addToCartNikeItemButtonClick();
         Utils.navigateTo(driver , ConfigUtliities.createInstance().getHomeURL());
         LenovoPCPage lenovopcpage= new HomePage(driver)
@@ -36,15 +36,20 @@ public class AddToCartTest extends BaseTestCases {
                 .lenovoItemIconClick()
                 .lenovoPageAddtocartButtonClick();
         CartPage cartpage =lenovopcpage.lenovoPageAddtocartPageLinkClick();
-        Assert.assertTrue(cartpage.isLenovoAdded() && cartpage.isNikeShoesAdded());
+        Assert.assertTrue(cartpage.isLenovoAdded() && cartpage.isNikeSBShoesAdded());
     }//end TC_addToCart_02()
     @Test(enabled = true, description = "verify when clicking 'remove' item buton in the shopping cart page, item is deleted")
     public void TC_addToCart_03() throws InterruptedException {
-        LoginPage loginObject = new LoginPage(driver);
-        HomePage homePage = loginObject.load().login(ConfigUtliities.createInstance().getEmail(), ConfigUtliities.createInstance().getPassword());
-        Thread.sleep(500);
-        CartPage cartpage = homePage.cartPageLinkClick().deleteNikeLenovoItems();
-        Assert.assertFalse(cartpage.areLenoveNikeItemexist());
+        Utils.navigateTo(driver , ConfigUtliities.createInstance().getHomeURL());
+        new HomePage(driver)
+                .apparelIconClick()
+                .shoesIconClick()
+                .nikeSBIconClick()
+                .addToCartNikeItemButtonClick();
+        CartPage cartpage = new HomePage(driver).cartPageLinkClick();
+        new SoftAssert().assertTrue(cartpage.isNikeSBShoesAdded());
+        cartpage.deleteNikeSBShoe();
+        Assert.assertFalse(cartpage.isnikeSBShoesItemExist());
     }//end TC_addToCart_03()
     @Test(enabled = false,description = "veify Adding Item to the shopping cart with different variations or configurations when not setting the options,error message appears ")
     public void TC_addToCart_04() throws InterruptedException

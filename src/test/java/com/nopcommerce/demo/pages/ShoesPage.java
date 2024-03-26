@@ -14,7 +14,7 @@ public class ShoesPage extends BasePage {
     private WebElement nikeSBIcon;
     @FindBy(linkText = "Nike Floral Roshe Customized Running Shoes")
     private WebElement nikeFloralIcon;
-    public NikeShoesPage nikeIconClick()
+    public NikeShoesPage nikeSBIconClick()
     {
         nikeSBIcon.click();
         return new NikeShoesPage(driver);

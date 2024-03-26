@@ -1,7 +1,8 @@
 package com.nopcommerce.demo.pages;
 
 import com.nopcommerce.demo.base.BasePage;
-import io.qameta.allure.Feature;
+import com.nopcommerce.demo.utilities.Utils;
+import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -17,10 +18,11 @@ public class CartPage extends BasePage {
     @FindBy(linkText = "HTC One Mini Blue")
     private WebElement htcMobileItem;
     @FindBy(linkText = "Nike SB Zoom Stefan Janoski \"Medium Mint\"")
-    private WebElement nikeShoesItem;
+    private WebElement nikeSBShoesItem;
+    private By nikeSBShoesItemElement = By.linkText("Nike SB Zoom Stefan Janoski \"Medium Mint\"");
     @FindBy(linkText = "Lenovo IdeaCentre 600 All-in-One PC")
     private WebElement lenovoItem;
-    @FindBy(xpath = "//*[@class='cart']/tbody/tr[2]/td[@class='remove-from-cart']/button")
+    @FindBy(xpath = "//*[@class='cart']/tbody/tr[1]/td[@class='remove-from-cart']/button")
     private WebElement nikeDeleteButton;
     @FindBy(xpath = "//*[@class='cart']/tbody/tr[2]/td[@class='remove-from-cart']/button")
     private WebElement lenovoDeleteButton;
@@ -33,7 +35,9 @@ public class CartPage extends BasePage {
     @FindBy(id="checkout")
     private WebElement checkoutButton;
 
-
+    public boolean isnikeSBShoesItemExist(){
+        return Utils.isElementExist(driver,nikeSBShoesItemElement);
+    }
     public boolean isCartEmpty()
     {
 
@@ -43,9 +47,15 @@ public class CartPage extends BasePage {
     {
         return htcMobileItem.isDisplayed();
     }
-    public boolean isNikeShoesAdded()
+    public boolean isNikeSBShoesAdded()
     {
-        return nikeShoesItem.isDisplayed();
+        return nikeSBShoesItem.isDisplayed();
+    }
+    public void deleteNikeSBShoe(){
+        nikeDeleteButton.click();
+    }
+    public void isNikeSBShoeExist(){
+        nikeDeleteButton.click();
     }
     public boolean isLenovoAdded()
     {
@@ -65,7 +75,7 @@ public class CartPage extends BasePage {
     {
         boolean retStatus = true;
         try{
-            if(lenovoItem.isDisplayed() || nikeShoesItem.isDisplayed() )
+            if(lenovoItem.isDisplayed() || nikeSBShoesItem.isDisplayed() )
                 retStatus = true;
         }catch(NoSuchElementException e){
             retStatus = false;
