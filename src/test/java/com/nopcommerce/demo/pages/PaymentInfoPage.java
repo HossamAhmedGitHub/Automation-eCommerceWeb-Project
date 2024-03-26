@@ -1,6 +1,7 @@
 package com.nopcommerce.demo.pages;
 
 import com.nopcommerce.demo.base.BasePage;
+import com.nopcommerce.demo.utilities.ConfigUtliities;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -53,6 +54,15 @@ public class PaymentInfoPage extends BasePage {
     public ConfirmOrderPage continueButtonClick()
     {
         continueButton.click();
+        return new ConfirmOrderPage(driver);
+    }
+    public ConfirmOrderPage fillConfirmOrerForm(){
+        fillCardholderName(ConfigUtliities.createInstance().getName())
+                .fillcardNumber(ConfigUtliities.createInstance().getCardNumber())
+                .fillexpireMonth()
+                .fillexpireYear()
+                .fillcardCode(ConfigUtliities.createInstance().getCardCode())
+                .continueButtonClick();
         return new ConfirmOrderPage(driver);
     }
 

@@ -1,6 +1,7 @@
 package com.nopcommerce.demo.pages;
 
 import com.nopcommerce.demo.base.BasePage;
+import com.nopcommerce.demo.utilities.Utils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -20,7 +21,9 @@ public class LenovoPCPage extends BasePage {
     }
     public CartPage lenovoPageAddtocartPageLinkClick()
     {
+        Utils.scrollToElement(driver,lenovoPageAddtocartPageLink );
         lenovoPageAddtocartPageLink.click();
         return new CartPage(driver);
     }
+
 }

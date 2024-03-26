@@ -1,6 +1,7 @@
 package com.nopcommerce.demo.pages;
 
 import com.nopcommerce.demo.base.BasePage;
+import com.nopcommerce.demo.utilities.Utils;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -55,6 +56,7 @@ public class NikeFloralPage extends BasePage {
     }
     public CartPage addtocartPageLinkClick()
     {
+        Utils.scrollToElement(driver,addtocartPageLink );
         addtocartPageLink.click();
         return new CartPage(driver);
     }

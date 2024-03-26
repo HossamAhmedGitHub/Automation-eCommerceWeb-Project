@@ -42,5 +42,14 @@ public class ConfigUtliities {
     public String getZip(){
         return data.getProperty("zip");
     }
+    public String getCardNumber(){
+        return data.getProperty("cardNumber");
+    }
+    public String getCardCode(){
+        return data.getProperty("cardCode");
+    }
+    public String getName(){
+        return data.getProperty("name");
+    }
 
 }

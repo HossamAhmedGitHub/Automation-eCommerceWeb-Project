@@ -1,6 +1,7 @@
 package com.nopcommerce.demo.pages;
 
 import com.nopcommerce.demo.base.BasePage;
+import com.nopcommerce.demo.utilities.Utils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -45,7 +46,7 @@ public class HomePage extends BasePage {
     }
     public CartPage cartPageLinkClick()
     {
-
+        Utils.scrollToElement(driver,cartPageLink );
         cartPageLink.click();
         return new CartPage(driver);
     }
