@@ -10,7 +10,7 @@ import org.testng.asserts.SoftAssert;
 
 public class AddToCartTest extends BaseTestCases {
     @Test(description = "verify add to cart button _FUNC when clicking on it, the item must be added to the cart")
-    public void TC_addToCart_01() throws InterruptedException {
+    public void TC_addToCart_01()  {
         Utils.navigateTo(driver , ConfigUtliities.createInstance().getHomeURL());
         HtcOneMiniBluePage htcPage = new HomePage(driver)
                 .electronicsIconClick()
@@ -22,7 +22,7 @@ public class AddToCartTest extends BaseTestCases {
     }//end TC_addToCart_01()
 
     @Test(enabled = true, description = "verify add to cart  _FUNC when adding multiple items to the cart, the various items must be added to the cart")
-    public void TC_addToCart_02() throws InterruptedException {
+    public void TC_addToCart_02() {
         Utils.navigateTo(driver , ConfigUtliities.createInstance().getHomeURL());
         new HomePage(driver)
                 .apparelIconClick()
@@ -39,7 +39,7 @@ public class AddToCartTest extends BaseTestCases {
         Assert.assertTrue(cartpage.isLenovoAdded() && cartpage.isNikeSBShoesAdded());
     }//end TC_addToCart_02()
     @Test(enabled = true, description = "verify when clicking 'remove' item buton in the shopping cart page, item is deleted")
-    public void TC_addToCart_03() throws InterruptedException {
+    public void TC_addToCart_03()  {
         Utils.navigateTo(driver , ConfigUtliities.createInstance().getHomeURL());
         new HomePage(driver)
                 .apparelIconClick()
@@ -51,18 +51,15 @@ public class AddToCartTest extends BaseTestCases {
         cartpage.deleteNikeSBShoe();
         Assert.assertFalse(cartpage.isnikeSBShoesItemExist());
     }//end TC_addToCart_03()
-    @Test(enabled = false,description = "veify Adding Item to the shopping cart with different variations or configurations when not setting the options,error message appears ")
-    public void TC_addToCart_04() throws InterruptedException
+    @Test(enabled = true,description = "veify Adding Item to the shopping cart with different variations or configurations when not setting the options,error message appears ")
+    public void TC_addToCart_04()
     {
-        LoginPage loginObject = new LoginPage(driver);
-        HomePage homePage = loginObject.load().login(ConfigUtliities.createInstance().getEmail(), ConfigUtliities.createInstance().getPassword());
-        Thread.sleep(500);
-        NikeFloralPage nikeflorapage = homePage
+        Utils.navigateTo(driver , ConfigUtliities.createInstance().getHomeURL());
+        NikeFloralPage nikeflorapage = new HomePage(driver)
                 .apparelIconClick()
                 .shoesIconClick()
                 .nikeFloralIconClick()
                 .nikeFloralAddtocartButtonClick();
-        Thread.sleep(2000);
         Assert.assertTrue(nikeflorapage.isErrorMessageDisplayed());
     }//end TC_addToCart_04()
     @Test(enabled = false, description = "veify Adding Item to the shopping cart with different  configurations when setting the configurations, the item is added to cart")

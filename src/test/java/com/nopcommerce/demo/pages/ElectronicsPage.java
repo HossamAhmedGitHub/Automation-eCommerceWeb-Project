@@ -14,11 +14,9 @@ public class ElectronicsPage extends BasePage {
     }
     @FindBy(css = "[title='Show products in category Cell phones']")
     private WebElement cellPhonesIcon;
-    public CellPhonesPage cellPhonesClick() throws InterruptedException {
+    public CellPhonesPage cellPhonesClick()  {
         JavascriptExecutor jse =(JavascriptExecutor)driver;
-        Thread.sleep(1000);
         jse.executeScript("arguments[0].scrollIntoView()",cellPhonesIcon);
-        Thread.sleep(1000);
         cellPhonesIcon.click();
         return new CellPhonesPage(driver);
     }
