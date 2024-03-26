@@ -64,7 +64,6 @@ public class CartPage extends BasePage {
     public CartPage deleteNikeLenovoItems() throws InterruptedException {
         try{
             nikeDeleteButton.click();
-            Thread.sleep(250);
             lenovoDeleteButton.click();
         }catch (NoSuchElementException e){
             System.out.println("Error: nikeDeleteButton and lenovoDeleteButton not found");
