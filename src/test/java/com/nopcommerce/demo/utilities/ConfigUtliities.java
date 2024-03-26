@@ -27,4 +27,7 @@ public class ConfigUtliities {
     public String getSignupURL(){
         return data.getProperty("signupUrl");
     }
+    public String getHomeURL(){
+        return data.getProperty("homeURL");
+    }
 }
