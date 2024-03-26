@@ -104,20 +104,16 @@ public class AddToCartTest extends BaseTestCases {
         CheckoutCompletedPage checkout = confirmOrder.confirmClick();
         Assert.assertTrue(checkout.isSucessMessageDisplayed());
     }//end TC_addToCart_06()
-    @Test(enabled = false,description = "verify Add to cart _FUNC when user adds an item from the wishlist items in the wishlist page, item is added to the cart")
-    public void TC_addToCart_07() throws InterruptedException
-    {
-        LoginPage loginObject = new LoginPage(driver);
-        HomePage homePage = loginObject.load().login(ConfigUtliities.createInstance().getEmail(), ConfigUtliities.createInstance().getPassword());
-        Thread.sleep(500);
-        WishListPage wishlistpage= homePage
+    @Test(enabled = true,description = "verify Add to cart _FUNC when user adds an item from the wishlist items in the wishlist page, item is added to the cart")
+    public void TC_addToCart_07() {
+        Utils.navigateTo(driver , ConfigUtliities.createInstance().getHomeURL());
+        WishListPage wishlistpage= new HomePage(driver)
                 .jeweleryIconClick()
                 .vintageRingIconClick()
                 .addToWishListButtonClick()
                 .wishlistPageLinkClick();
         CartPage cartPage=wishlistpage.vintageRingCheckboxClick().addtocartButtonClick();
         Assert.assertTrue(cartPage.isVintageRingDisplayed());
-        Thread.sleep(2000);
     }//end TC_addToCart_07()
 
 }
