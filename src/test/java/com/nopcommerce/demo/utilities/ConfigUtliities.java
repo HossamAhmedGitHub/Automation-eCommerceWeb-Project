@@ -24,4 +24,7 @@ public class ConfigUtliities {
     public String getPassword(){
         return data.getProperty("password");
     }
+    public String getSignupURL(){
+        return data.getProperty("signupUrl");
+    }
 }
