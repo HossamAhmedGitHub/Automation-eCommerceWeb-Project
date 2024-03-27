@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 
 public class TS1_SignUpTest extends BaseTestCases {
 
-    @Test
+    @Test(description = "verify sign up _FUNC with validate input data, account must be created")
     public void TC_signup_01(){
         User.generateUser();
         boolean veifySignUp = new SignupPage(driver)

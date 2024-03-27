@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
 public class TS3_AddToCartTest extends BaseTestCases {
-    @Test(enabled = false,description = "verify add to cart button _FUNC when clicking on it, the item must be added to the cart")
+    @Test(description = "verify add to cart button _FUNC when clicking on it, the item must be added to the cart")
     public void TC_addToCart_01()  {
         Utils.navigateTo(driver , ConfigUtliities.createInstance().getHomeURL());
         HtcOneMiniBluePage htcPage = new HomePage(driver)
@@ -22,7 +22,7 @@ public class TS3_AddToCartTest extends BaseTestCases {
         Assert.assertTrue(cartpage.isHTCAdded());
     }//end TC_addToCart_01()
 
-    @Test(enabled = false, description = "verify add to cart  _FUNC when adding multiple items to the cart, the various items must be added to the cart")
+    @Test( description = "verify add to cart  _FUNC when adding multiple items to the cart, the various items must be added to the cart")
     public void TC_addToCart_02() {
         Utils.navigateTo(driver , ConfigUtliities.createInstance().getHomeURL());
         new HomePage(driver)
@@ -40,7 +40,7 @@ public class TS3_AddToCartTest extends BaseTestCases {
         Assert.assertTrue(cartpage.isLenovoAdded() && cartpage.isNikeSBShoesAdded());
     }//end TC_addToCart_02()
 
-    @Test(enabled = false,description = "verify when clicking 'remove' item buton in the shopping cart page, item is deleted")
+    @Test(description = "verify when clicking 'remove' item buton in the shopping cart page, item is deleted")
     public void TC_addToCart_03()  {
         Utils.navigateTo(driver , ConfigUtliities.createInstance().getHomeURL());
         new HomePage(driver)
@@ -66,7 +66,7 @@ public class TS3_AddToCartTest extends BaseTestCases {
         Assert.assertTrue(nikeflorapage.isErrorMessageDisplayed());
     }//end TC_addToCart_04()
 
-    @Test(enabled = false,description = "veify Adding Item to the shopping cart with different  configurations when setting the configurations, the item is added to cart")
+    @Test(description = "veify Adding Item to the shopping cart with different  configurations when setting the configurations, the item is added to cart")
     public void TC_addToCart_05(){
         Utils.navigateTo(driver , ConfigUtliities.createInstance().getHomeURL());
         NikeFloralPage nikeflorapage = new HomePage(driver)

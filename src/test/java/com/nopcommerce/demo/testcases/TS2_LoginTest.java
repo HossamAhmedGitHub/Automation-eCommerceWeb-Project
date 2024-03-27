@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 
 public class TS2_LoginTest extends BaseTestCases {
 
-    @Test(enabled = false,description = "verify login _FUNC with valid email and password")
+    @Test(description = "verify login _FUNC with valid email and password")
     public void TC_login_01()
     {
         boolean status = new LoginPage(driver)
