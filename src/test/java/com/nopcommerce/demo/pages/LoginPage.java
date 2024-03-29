@@ -1,12 +1,12 @@
 package com.nopcommerce.demo.pages;
 
-import com.nopcommerce.demo.base.BasePage;
+
 import com.nopcommerce.demo.utilities.ConfigUtliities;
 import com.nopcommerce.demo.utilities.Utils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
+
+
 
 public class LoginPage  {
 

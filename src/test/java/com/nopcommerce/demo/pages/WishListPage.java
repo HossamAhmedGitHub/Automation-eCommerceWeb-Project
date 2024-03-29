@@ -1,26 +1,25 @@
 package com.nopcommerce.demo.pages;
 
-import com.nopcommerce.demo.base.BasePage;
+import com.nopcommerce.demo.utilities.Utils;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 
-public class WishListPage extends BasePage {
+public class WishListPage{
+    private WebDriver driver;
     public WishListPage(WebDriver driver) {
-        super(driver);
+        this.driver = driver;
     }
-    @FindBy(css=".wishlist-add-to-cart-button")
-    private WebElement addtocartButton;
-    @FindBy(xpath = "//tbody/tr[1]/td[@class='add-to-cart']/input")
-    private WebElement vintageRingCheckbox;
-    public CartPage addtocartButtonClick()
+
+    private By addtocartButton = By.cssSelector(".wishlist-add-to-cart-button");
+    private By vintageRingCheckbox = By.xpath("//tbody/tr[1]/td[@class='add-to-cart']/input");
+    public CartPage clickOnAddtocartButton()
     {
-        addtocartButton.click();
+        Utils.clicking(driver,addtocartButton);
         return new CartPage(driver);
     }
-    public WishListPage vintageRingCheckboxClick()
+    public WishListPage clickOnvintageRingCheckbox()
     {
-        vintageRingCheckbox.click();
+        Utils.clicking(driver,vintageRingCheckbox);
         return this;
     }
 }

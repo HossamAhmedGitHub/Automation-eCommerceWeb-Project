@@ -1,33 +1,33 @@
 package com.nopcommerce.demo.pages;
 
-import com.nopcommerce.demo.base.BasePage;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 
-public class PaymentMethodPage extends BasePage {
+import com.nopcommerce.demo.utilities.Utils;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+
+
+public class PaymentMethodPage {
+    private WebDriver driver;
     public PaymentMethodPage(WebDriver driver) {
-        super(driver);
+        this.driver = driver;
     }
-    @FindBy(id="paymentmethod_0")
-    private WebElement moneyOrder;
-    @FindBy(id="paymentmethod_1")
-    private WebElement creditCard;
-    @FindBy(css = "[class = 'button-1 payment-method-next-step-button']")
-    private WebElement continueButton;
+    private By moneyOrder = By.id("paymentmethod_0");
+
+    private By creditCard = By.id("paymentmethod_1");
+    private By continueButton = By.cssSelector("[class = 'button-1 payment-method-next-step-button']");
     public PaymentInfoPage continueButtonClick()
     {
-        continueButton.click();
+        Utils.clicking(driver, continueButton);
         return new PaymentInfoPage(driver);
     }
-    public PaymentMethodPage creditCardClick()
+    public PaymentMethodPage clickOnCreditCard()
     {
-        creditCard.click();
+        Utils.clicking(driver, creditCard);
         return this;
     }
-    public PaymentMethodPage moneyOrderClick()
+    public PaymentMethodPage clickOnMoneyOrder()
     {
-        moneyOrder.click();
+        Utils.clicking(driver, moneyOrder);
         return this;
     }
 

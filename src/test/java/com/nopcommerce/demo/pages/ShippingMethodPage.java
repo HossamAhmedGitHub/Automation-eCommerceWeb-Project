@@ -1,40 +1,38 @@
 package com.nopcommerce.demo.pages;
 
-import com.nopcommerce.demo.base.BasePage;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 
-public class ShippingMethodPage extends BasePage {
+import com.nopcommerce.demo.utilities.Utils;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+
+
+public class ShippingMethodPage{
+    private WebDriver driver;
     public ShippingMethodPage(WebDriver driver) {
-        super(driver);
+        this.driver = driver;
     }
-    @FindBy(id="shippingoption_0")
-    private WebElement groundOption;
-    @FindBy(id="shippingoption_1")
-    private WebElement nextDayAirOption;
-    @FindBy(id="shippingoption_2")
-    private WebElement twoDayAirOption;
-    @FindBy(css=".shipping-method-next-step-button")
-    private WebElement continueButton;
-    public ShippingMethodPage groundOptionClick()
+    private By groundOption = By.id("shippingoption_0");
+    private By nextDayAirOption = By.id("shippingoption_1");
+    private By twoDayAirOption = By.id("shippingoption_2");
+    private By continueButton = By.cssSelector(".shipping-method-next-step-button");
+    public ShippingMethodPage clickOnGroundOption()
     {
-        groundOption.click();
+        Utils.clicking(driver,groundOption);
         return this;
     }
     public ShippingMethodPage nextDayAirOptionClick()
     {
-        nextDayAirOption.click();
+        Utils.clicking(driver,nextDayAirOption);
         return this;
     }
     public ShippingMethodPage twoDayAirOptionClick()
     {
-        twoDayAirOption.click();
+        Utils.clicking(driver,twoDayAirOption);
         return this;
     }
     public PaymentMethodPage continueButtonClick()
     {
-        continueButton.click();
+        Utils.clicking(driver,continueButton);
         return new PaymentMethodPage(driver);
     }
 

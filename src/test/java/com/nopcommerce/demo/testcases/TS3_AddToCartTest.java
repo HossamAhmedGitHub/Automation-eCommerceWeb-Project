@@ -102,7 +102,7 @@ public class TS3_AddToCartTest extends BaseTestCases {
         ShippingMethodPage shppingMethodpage = new BillingPage(driver)
                 .fillingBillingForm();
         PaymentMethodPage paymentmethodpage =  shppingMethodpage.nextDayAirOptionClick().continueButtonClick();
-        PaymentInfoPage paymentinfopage = paymentmethodpage.creditCardClick().continueButtonClick();
+        PaymentInfoPage paymentinfopage = paymentmethodpage.clickOnCreditCard().continueButtonClick();
         ConfirmOrderPage confirmOrder = new PaymentInfoPage(driver).fillConfirmOrerForm();
         CheckoutCompletedPage checkout = confirmOrder.clickOnConfirm();
         Assert.assertTrue(checkout.isSucessMessageDisplayed());
@@ -114,9 +114,9 @@ public class TS3_AddToCartTest extends BaseTestCases {
         WishListPage wishlistpage= new HomePage(driver)
                 .jeweleryIconClick()
                 .vintageRingIconClick()
-                .addToWishListButtonClick()
+                .clickOnAddToWishListButton()
                 .wishlistPageLinkClick();
-        CartPage cartPage=wishlistpage.vintageRingCheckboxClick().addtocartButtonClick();
+        CartPage cartPage=wishlistpage.clickOnvintageRingCheckbox().clickOnAddtocartButton();
         Assert.assertTrue(cartPage.isVintageRingExisted());
     }//end TC_addToCart_07()
 

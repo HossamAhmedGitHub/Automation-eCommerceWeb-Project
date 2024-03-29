@@ -1,26 +1,25 @@
 package com.nopcommerce.demo.pages;
 
-import com.nopcommerce.demo.base.BasePage;
+import com.nopcommerce.demo.utilities.Utils;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 
-public class VintageRingPage extends BasePage {
+public class VintageRingPage {
+    private WebDriver driver;
     public VintageRingPage(WebDriver driver) {
-        super(driver);
+        this.driver = driver;
     }
-    @FindBy(id="add-to-wishlist-button-42")
-    private WebElement addToWishListButton;
-    @FindBy(linkText = "wishlist")
-    private WebElement wishlistPageLink;
-    public VintageRingPage addToWishListButtonClick()
+
+    private By addToWishListButton = By.id("add-to-wishlist-button-42");
+    private By wishlistPageLink = By.linkText("wishlist");
+    public VintageRingPage clickOnAddToWishListButton()
     {
-        addToWishListButton.click();
+        Utils.clicking(driver, addToWishListButton);
         return this;
     }
     public WishListPage wishlistPageLinkClick()
     {
-        wishlistPageLink.click();
+        Utils.clicking(driver, wishlistPageLink);
         return new WishListPage(driver);
     }
 }
