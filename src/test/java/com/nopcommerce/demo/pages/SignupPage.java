@@ -2,29 +2,25 @@ package com.nopcommerce.demo.pages;
 
 import com.nopcommerce.demo.base.BasePage;
 import com.nopcommerce.demo.utilities.ConfigUtliities;
+import com.nopcommerce.demo.utilities.Utils;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 
-public class SignupPage extends BasePage {
 
+public class SignupPage  {
+    private WebDriver driver;
     public SignupPage(WebDriver driver) {
-        super(driver);
+        this.driver = driver;
     }
-    @FindBy(id = "FirstName")
-    private WebElement firstNameField;
-    @FindBy(id = "LastName")
-    private WebElement lastNameField;
-    @FindBy(id = "Email")
-    private WebElement emailField;
-    @FindBy(id = "Password")
-    private WebElement passwordField;
-    @FindBy(id = "ConfirmPassword")
-    private WebElement confirmPasswordField;
-    @FindBy(id = "register-button")
-    private WebElement registerButton;
-    @FindBy(xpath = "//*[@class='page-body']/div[@class='result']")
-    private WebElement registerationCompleteMessage;
+    private By firstNameField = By.id("FirstName");
+    private By lastNameField = By.id("LastName");
+    private By emailField = By.id("Email");
+    private By passwordField = By.id("Password");
+    private By confirmPasswordField = By.id("ConfirmPassword");
+    private By registerButton = By.id("register-button");
+
+    private By registerationCompleteMessage = By.xpath("//*[@class='page-body']/div[@class='result']");
 
     public SignupPage navigateToSignupPage(){
         driver.get(ConfigUtliities.createInstance().getSignupURL());
@@ -32,19 +28,20 @@ public class SignupPage extends BasePage {
     }
 
     public SignupPage signup(String fname, String lname, String email, String password, String confirmPassword){
-       firstNameField.sendKeys(fname);
-       lastNameField.sendKeys(lname);
-       emailField.sendKeys(email);
-       passwordField.sendKeys(password);
-       confirmPasswordField.sendKeys(confirmPassword);
+        Utils.sendData(driver, firstNameField, fname);
+        Utils.sendData(driver, lastNameField, lname);
+        Utils.sendData(driver, emailField, email);
+        Utils.sendData(driver, passwordField, password);
+        Utils.sendData(driver, confirmPasswordField, confirmPassword);
         return this;
     }
     public SignupPage clickOnRegisterButton(){
-        registerButton.click();
+
+        Utils.clicking(driver, registerButton);
         return this;
     }
     public boolean verifySignup(){
-        return registerationCompleteMessage.isDisplayed();
+        return Utils.verifyElementVisible(driver,registerationCompleteMessage);
     }
 
 }
