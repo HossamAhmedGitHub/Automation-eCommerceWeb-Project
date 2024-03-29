@@ -73,7 +73,7 @@ public class CartPage  {
     }//end isNikeFloralItemDisplayed()
     public boolean isVintageRingExisted()
     {
-        return Utils.verifyElementVisible(driver,nikeFloralItem);
+        return Utils.verifyElementVisible(driver,vintageRingItem);
     }//end isVintageRingDisplayed()
     public CartPage termsofserviceCheckboxClick()
     {

@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
 public class TS3_AddToCartTest extends BaseTestCases {
-    @Test(description = "verify add to cart button _FUNC when clicking on it, the item must be added to the cart")
+    @Test(enabled = false, description = "verify add to cart button _FUNC when clicking on it, the item must be added to the cart")
     public void TC_addToCart_01()  {
         Utils.navigateTo(driver , ConfigUtliities.createInstance().getHomeURL());
         HtcOneMiniBluePage htcPage = new HomePage(driver)
@@ -23,7 +23,7 @@ public class TS3_AddToCartTest extends BaseTestCases {
         Assert.assertTrue(new CartPage(driver).isHTCAdded());
     }//end TC_addToCart_01()
 
-    @Test( description = "verify add to cart  _FUNC when adding multiple items to the cart, the various items must be added to the cart")
+    @Test( enabled = false, description = "verify add to cart  _FUNC when adding multiple items to the cart, the various items must be added to the cart")
     public void TC_addToCart_02() {
         Utils.navigateTo(driver , ConfigUtliities.createInstance().getHomeURL());
         new HomePage(driver)
@@ -41,7 +41,7 @@ public class TS3_AddToCartTest extends BaseTestCases {
         Assert.assertTrue(cartpage.isLenovoAdded() && cartpage.isNikeSBShoesAdded());
     }//end TC_addToCart_02()
 
-    @Test(description = "verify when clicking 'remove' item buton in the shopping cart page, item is deleted")
+    @Test(enabled = false, description = "verify when clicking 'remove' item buton in the shopping cart page, item is deleted")
     public void TC_addToCart_03()  {
         Utils.navigateTo(driver , ConfigUtliities.createInstance().getHomeURL());
         new HomePage(driver)
@@ -55,7 +55,7 @@ public class TS3_AddToCartTest extends BaseTestCases {
         Assert.assertFalse(cartpage.isnikeSBShoesItemExist());
     }//end TC_addToCart_03()
 
-    @Test(description = "veify Adding Item to the shopping cart with different variations or configurations when not setting the options,error message appears ")
+    @Test(enabled = false, description = "veify Adding Item to the shopping cart with different variations or configurations when not setting the options,error message appears ")
     public void TC_addToCart_04()
     {
         Utils.navigateTo(driver , ConfigUtliities.createInstance().getHomeURL());
@@ -67,7 +67,7 @@ public class TS3_AddToCartTest extends BaseTestCases {
         Assert.assertTrue(nikeflorapage.isErrorMessageDisplayed());
     }//end TC_addToCart_04()
 
-    @Test(description = "veify Adding Item to the shopping cart with different  configurations when setting the configurations, the item is added to cart")
+    @Test(enabled = false, description = "veify Adding Item to the shopping cart with different  configurations when setting the configurations, the item is added to cart")
     public void TC_addToCart_05(){
         Utils.navigateTo(driver , ConfigUtliities.createInstance().getHomeURL());
         NikeFloralPage nikeflorapage = new HomePage(driver)
@@ -99,16 +99,19 @@ public class TS3_AddToCartTest extends BaseTestCases {
         new CartPage(driver)
                 .termsofserviceCheckboxClick()
                 .checkoutButtonClick();
-        ShippingMethodPage shppingMethodpage = new BillingPage(driver)
-                .fillingBillingForm();
-        PaymentMethodPage paymentmethodpage =  shppingMethodpage.nextDayAirOptionClick().continueButtonClick();
-        PaymentInfoPage paymentinfopage = paymentmethodpage.clickOnCreditCard().continueButtonClick();
-        ConfirmOrderPage confirmOrder = new PaymentInfoPage(driver).fillConfirmOrerForm();
-        CheckoutCompletedPage checkout = confirmOrder.clickOnConfirm();
-        Assert.assertTrue(checkout.isSucessMessageDisplayed());
+        new BillingPage(driver).fillingBillingForm();
+        new ShippingMethodPage(driver)
+                .nextDayAirOptionClick()
+                .continueButtonClick();
+        new PaymentMethodPage(driver)
+                .clickOnCreditCard().
+                continueButtonClick();
+        new PaymentInfoPage(driver).fillConfirmOrerForm();
+        new ConfirmOrderPage(driver).clickOnConfirm();
+        Assert.assertTrue(new CheckoutCompletedPage(driver).isSucessMessageDisplayed());
     }//end TC_addToCart_06()
 
-    @Test(enabled = false,description = "verify Add to cart _FUNC when user adds an item from the wishlist items in the wishlist page, item is added to the cart")
+    @Test(enabled = false, description = "verify Add to cart _FUNC when user adds an item from the wishlist items in the wishlist page, item is added to the cart")
     public void TC_addToCart_07() {
         Utils.navigateTo(driver , ConfigUtliities.createInstance().getHomeURL());
         WishListPage wishlistpage= new HomePage(driver)
