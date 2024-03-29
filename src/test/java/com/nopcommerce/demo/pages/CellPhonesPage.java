@@ -1,20 +1,21 @@
 package com.nopcommerce.demo.pages;
 
-import com.nopcommerce.demo.base.BasePage;
+import com.nopcommerce.demo.utilities.Utils;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 
-public class CellPhonesPage extends BasePage {
+public class CellPhonesPage{
+    private WebDriver driver;
     public CellPhonesPage(WebDriver driver) {
-        super(driver);
-    }
-    @FindBy(linkText = "HTC One Mini Blue")
-    private WebElement htcMobileIcon;
 
-    public HtcOneMiniBluePage htcMobileIconClick()
+        this.driver = driver;
+    }
+
+    private By htcMobileIcon = By.linkText("HTC One Mini Blue");
+
+    public HtcOneMiniBluePage ClickOnHtcMobile()
     {
-        htcMobileIcon.click();
+        Utils.clicking(driver, htcMobileIcon);
         return new HtcOneMiniBluePage(driver);
     }
 

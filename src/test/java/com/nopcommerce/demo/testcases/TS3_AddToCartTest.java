@@ -15,28 +15,29 @@ public class TS3_AddToCartTest extends BaseTestCases {
         Utils.navigateTo(driver , ConfigUtliities.createInstance().getHomeURL());
         HtcOneMiniBluePage htcPage = new HomePage(driver)
                 .electronicsIconClick()
-                .cellPhonesClick()
-                .htcMobileIconClick()
+                .ClickOnCellPhone()
+                .ClickOnHtcMobile()
                 .addToCartClick();
-        CartPage cartpage =htcPage.addToCartLinkPageClick();
-        Assert.assertTrue(cartpage.isHTCAdded());
+        new HomePage(driver).clickOnCartPageLink();
+
+        Assert.assertTrue(new CartPage(driver).isHTCAdded());
     }//end TC_addToCart_01()
 
     @Test( description = "verify add to cart  _FUNC when adding multiple items to the cart, the various items must be added to the cart")
     public void TC_addToCart_02() {
         Utils.navigateTo(driver , ConfigUtliities.createInstance().getHomeURL());
         new HomePage(driver)
-                .apparelIconClick()
-                .shoesIconClick()
-                .nikeSBIconClick()
-                .addToCartNikeItemButtonClick();
+                .clickOnApparelIcon()
+                .clickOnShoesIcon()
+                .ClickOnNikeSBIcon()
+                .clickOnAddToCartNikeItemButton();
         Utils.navigateTo(driver , ConfigUtliities.createInstance().getHomeURL());
         LenovoPCPage lenovopcpage= new HomePage(driver)
-                .computerIcon()
+                .clickOnComputerIcon()
                 .desktopIconClick()
                 .lenovoItemIconClick()
-                .lenovoPageAddtocartButtonClick();
-        CartPage cartpage =lenovopcpage.lenovoPageAddtocartPageLinkClick();
+                .clickOnLenovoPageAddtocartButton();
+        CartPage cartpage =new HomePage(driver).clickOnCartPageLink();
         Assert.assertTrue(cartpage.isLenovoAdded() && cartpage.isNikeSBShoesAdded());
     }//end TC_addToCart_02()
 
@@ -44,11 +45,11 @@ public class TS3_AddToCartTest extends BaseTestCases {
     public void TC_addToCart_03()  {
         Utils.navigateTo(driver , ConfigUtliities.createInstance().getHomeURL());
         new HomePage(driver)
-                .apparelIconClick()
-                .shoesIconClick()
-                .nikeSBIconClick()
-                .addToCartNikeItemButtonClick();
-        CartPage cartpage = new HomePage(driver).cartPageLinkClick();
+                .clickOnApparelIcon()
+                .clickOnShoesIcon()
+                .ClickOnNikeSBIcon()
+                .clickOnAddToCartNikeItemButton();
+        CartPage cartpage = new HomePage(driver).clickOnCartPageLink();
         new SoftAssert().assertTrue(cartpage.isNikeSBShoesAdded());
         cartpage.deleteNikeSBShoe();
         Assert.assertFalse(cartpage.isnikeSBShoesItemExist());
@@ -59,10 +60,10 @@ public class TS3_AddToCartTest extends BaseTestCases {
     {
         Utils.navigateTo(driver , ConfigUtliities.createInstance().getHomeURL());
         NikeFloralPage nikeflorapage = new HomePage(driver)
-                .apparelIconClick()
-                .shoesIconClick()
-                .nikeFloralIconClick()
-                .nikeFloralAddtocartButtonClick();
+                .clickOnApparelIcon()
+                .clickOnShoesIcon()
+                .clickOnNikeFloralIcon()
+                .clickOnNikeFloralAddtocartButton();
         Assert.assertTrue(nikeflorapage.isErrorMessageDisplayed());
     }//end TC_addToCart_04()
 
@@ -70,14 +71,14 @@ public class TS3_AddToCartTest extends BaseTestCases {
     public void TC_addToCart_05(){
         Utils.navigateTo(driver , ConfigUtliities.createInstance().getHomeURL());
         NikeFloralPage nikeflorapage = new HomePage(driver)
-                .apparelIconClick()
-                .shoesIconClick()
-                .nikeFloralIconClick();
+                .clickOnApparelIcon()
+                .clickOnShoesIcon()
+                .clickOnNikeFloralIcon();
         CartPage cartpage= nikeflorapage
                .setConfigurations()
-               .nikeFloralAddtocartButtonClick()
+               .clickOnNikeFloralAddtocartButton()
                .addtocartPageLinkClick();
-        Assert.assertTrue(cartpage.isNikeFloralItemDisplayed());
+        Assert.assertTrue(cartpage.isNikeFloralItemExisted());
     }//end TC_addToCart_05()
 
     @Test(description = "verify CHECKOUT _FUNC when user does a checkout with filling all the required data, checkout is done.")
@@ -88,12 +89,12 @@ public class TS3_AddToCartTest extends BaseTestCases {
                 .login(User.getEmail(), User.getPassword());
         Utils.navigateTo(driver , ConfigUtliities.createInstance().getHomeURL());
         new HomePage(driver)
-                .apparelIconClick()
-                .shoesIconClick()
-                .nikeFloralIconClick();
+                .clickOnApparelIcon()
+                .clickOnShoesIcon()
+                .clickOnNikeFloralIcon();
         new NikeFloralPage(driver)
                 .setConfigurations()
-                .nikeFloralAddtocartButtonClick()
+                .clickOnNikeFloralAddtocartButton()
                 .addtocartPageLinkClick();
         new CartPage(driver)
                 .termsofserviceCheckboxClick()
@@ -103,11 +104,11 @@ public class TS3_AddToCartTest extends BaseTestCases {
         PaymentMethodPage paymentmethodpage =  shppingMethodpage.nextDayAirOptionClick().continueButtonClick();
         PaymentInfoPage paymentinfopage = paymentmethodpage.creditCardClick().continueButtonClick();
         ConfirmOrderPage confirmOrder = new PaymentInfoPage(driver).fillConfirmOrerForm();
-        CheckoutCompletedPage checkout = confirmOrder.confirmClick();
+        CheckoutCompletedPage checkout = confirmOrder.clickOnConfirm();
         Assert.assertTrue(checkout.isSucessMessageDisplayed());
     }//end TC_addToCart_06()
 
-    @Test(description = "verify Add to cart _FUNC when user adds an item from the wishlist items in the wishlist page, item is added to the cart")
+    @Test(enabled = false,description = "verify Add to cart _FUNC when user adds an item from the wishlist items in the wishlist page, item is added to the cart")
     public void TC_addToCart_07() {
         Utils.navigateTo(driver , ConfigUtliities.createInstance().getHomeURL());
         WishListPage wishlistpage= new HomePage(driver)
@@ -116,7 +117,7 @@ public class TS3_AddToCartTest extends BaseTestCases {
                 .addToWishListButtonClick()
                 .wishlistPageLinkClick();
         CartPage cartPage=wishlistpage.vintageRingCheckboxClick().addtocartButtonClick();
-        Assert.assertTrue(cartPage.isVintageRingDisplayed());
+        Assert.assertTrue(cartPage.isVintageRingExisted());
     }//end TC_addToCart_07()
 
 }

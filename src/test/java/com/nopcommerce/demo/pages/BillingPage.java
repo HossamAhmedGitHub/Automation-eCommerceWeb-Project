@@ -1,69 +1,61 @@
 package com.nopcommerce.demo.pages;
 
-import com.nopcommerce.demo.base.BasePage;
 import com.nopcommerce.demo.utilities.ConfigUtliities;
-import org.openqa.selenium.NoSuchElementException;
+import com.nopcommerce.demo.utilities.Utils;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
 
-public class BillingPage extends BasePage {
+public class BillingPage {
+    private WebDriver driver;
+
     public BillingPage(WebDriver driver) {
-        super(driver);
-    }
-    @FindBy(css=".edit-address")
-    private WebElement editAddressForm;
-    @FindBy(css="[data-trigger='country-select']")
-    private WebElement country;
-    @FindBy(id="BillingNewAddress_City")
-    private WebElement city;
-    @FindBy(id="BillingNewAddress_Address1")
-    private WebElement address1;
-    @FindBy(id="BillingNewAddress_ZipPostalCode")
-    private WebElement zip;
-    @FindBy(id="BillingNewAddress_PhoneNumber")
-    private WebElement phone;
-    @FindBy(css = "[class = 'button-1 new-address-next-step-button']")
-    private WebElement continueButton;
 
-    @FindBy(css ="[for='billing-address-select']")
-    private WebElement autoFilledbilling;
-    @FindBy(id="delete-billing-address-button")
-    private WebElement deleteButton;
-
-    public boolean isCountryFieldDisplayed() {
-        System.out.println(country.isDisplayed());
-        return country.isDisplayed(); // if country element is not displayed, it means the autofill is displayed
+        this.driver = driver;
     }
+
+    private By editAddressForm = By.cssSelector(".edit-address");
+    private By country = By.cssSelector("[data-trigger='country-select']");
+
+    private By cityField = By.id("BillingNewAddress_City");
+
+    private By address1 = By.id("BillingNewAddress_Address1");
+    private By zipField = By.id("BillingNewAddress_ZipPostalCode");
+    private By phoneField = By.id("BillingNewAddress_PhoneNumber");
+    private By continueButton = By.cssSelector("[class = 'button-1 new-address-next-step-button']");
+    private By autoFilledbilling = By.cssSelector("[for='billing-address-select']");
+    private By deleteButton = By.id("delete-billing-address-button");
+
     public BillingPage fillCity(String city)
     {
-        this.city.sendKeys(city);
+        Utils.sendData(driver , cityField , city);
         return this;
     }
     public BillingPage fillAddress1(String address)
     {
-        this.address1.sendKeys(address);
+        Utils.sendData(driver , address1 , address);
         return this;
     }
     public BillingPage setCountry()  {
-        Select countries = new Select(country);
+        WebElement element = Utils.findWebElement(driver, country);
+        Select countries = new Select(element);
         countries.selectByIndex(5);
         return this;
     }
     public BillingPage fillZip(String zip)
     {
-        this.zip.sendKeys(zip);
+        Utils.sendData(driver , zipField , zip);
         return this;
     }
     public BillingPage fillPhone(String phone)
     {
-        this.phone.sendKeys(phone);
+        Utils.sendData(driver, phoneField,phone);
         return this;
     }
-    public ShippingMethodPage continueButtonClick()
+    public ShippingMethodPage clickOnContinueButton()
     {
-        continueButton.click();
+        Utils.clicking(driver,continueButton);
         return new ShippingMethodPage(driver);
     }
     public ShippingMethodPage fillingBillingForm(){
@@ -72,7 +64,7 @@ public class BillingPage extends BasePage {
                     .fillAddress1(ConfigUtliities.createInstance().getAddress1())
                     .fillZip(ConfigUtliities.createInstance().getZip())
                     .fillPhone(ConfigUtliities.createInstance().getPhoneNumber())
-                    .continueButtonClick();
+                    .clickOnContinueButton();
         return new ShippingMethodPage(driver);
     }//end fillingBillingForm()
 

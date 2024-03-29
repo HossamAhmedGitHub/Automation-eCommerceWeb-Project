@@ -1,19 +1,19 @@
 package com.nopcommerce.demo.pages;
 
-import com.nopcommerce.demo.base.BasePage;
+import com.nopcommerce.demo.utilities.Utils;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 
-public class ConfirmOrderPage extends BasePage {
+public class ConfirmOrderPage{
+    private WebDriver driver;
     public ConfirmOrderPage(WebDriver driver) {
-        super(driver);
+        this.driver = driver;
     }
-    @FindBy(css = ".confirm-order-next-step-button")
-    private WebElement confirm;
-    public CheckoutCompletedPage confirmClick()
+
+    private By confirm = By.cssSelector(".confirm-order-next-step-button");
+    public CheckoutCompletedPage clickOnConfirm()
     {
-        confirm.click();
+        Utils.clicking(driver,confirm);
         return new CheckoutCompletedPage(driver);
     }
 }

@@ -1,23 +1,21 @@
 package com.nopcommerce.demo.pages;
 
-import com.google.common.collect.Table;
-import com.nopcommerce.demo.base.BasePage;
+import com.nopcommerce.demo.utilities.Utils;
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 
-public class ElectronicsPage extends BasePage {
-
+public class ElectronicsPage{
+    private WebDriver driver;
     public ElectronicsPage(WebDriver driver) {
-        super(driver);
+
+        this.driver=driver;
     }
-    @FindBy(css = "[title='Show products in category Cell phones']")
-    private WebElement cellPhonesIcon;
-    public CellPhonesPage cellPhonesClick()  {
-        JavascriptExecutor jse =(JavascriptExecutor)driver;
-        jse.executeScript("arguments[0].scrollIntoView()",cellPhonesIcon);
-        cellPhonesIcon.click();
+
+    private By cellPhonesIcon = By.cssSelector("[title='Show products in category Cell phones']");
+    public CellPhonesPage ClickOnCellPhone()  {
+        Utils.scrollToElement(driver, cellPhonesIcon);
+        Utils.clicking(driver,cellPhonesIcon);
         return new CellPhonesPage(driver);
     }
 }

@@ -1,28 +1,26 @@
 package com.nopcommerce.demo.pages;
 
-import com.nopcommerce.demo.base.BasePage;
 import com.nopcommerce.demo.utilities.Utils;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 
-public class ShoesPage extends BasePage {
-
+public class ShoesPage {
+    private WebDriver driver;
     public ShoesPage(WebDriver driver) {
-        super(driver);
+        this.driver = driver;
     }
-    @FindBy(linkText = "Nike SB Zoom Stefan Janoski \"Medium Mint\"")
-    private WebElement nikeSBIcon;
-    @FindBy(linkText = "Nike Floral Roshe Customized Running Shoes")
-    private WebElement nikeFloralIcon;
-    public NikeShoesPage nikeSBIconClick()
+
+    private By nikeSBIcon = By.linkText("Nike SB Zoom Stefan Janoski \"Medium Mint\"");
+
+    private By nikeFloralIcon = By.linkText("Nike Floral Roshe Customized Running Shoes");
+    public NikeShoesPage ClickOnNikeSBIcon()
     {
-        nikeSBIcon.click();
+        Utils.clicking(driver, nikeSBIcon);
         return new NikeShoesPage(driver);
     }
-    public NikeFloralPage nikeFloralIconClick()
+    public NikeFloralPage clickOnNikeFloralIcon()
     {
-        nikeFloralIcon.click();
+        Utils.clicking(driver, nikeFloralIcon);
         return new NikeFloralPage(driver);
     }
 

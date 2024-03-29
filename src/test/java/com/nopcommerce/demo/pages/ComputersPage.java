@@ -1,19 +1,22 @@
 package com.nopcommerce.demo.pages;
 
 import com.nopcommerce.demo.base.BasePage;
+import com.nopcommerce.demo.utilities.Utils;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class ComputersPage extends BasePage {
+public class ComputersPage{
+    private WebDriver driver;
     public ComputersPage(WebDriver driver) {
-        super(driver);
+        this.driver = driver;
     }
-    @FindBy (css="[title='Show products in category Desktops']")
-    private WebElement desktopIcon;
+
+    private By desktopIcon = By.cssSelector("[title='Show products in category Desktops']");
     public DesktopsPage desktopIconClick()
     {
-        desktopIcon.click();
+        Utils.clicking(driver, desktopIcon);
         return new DesktopsPage(driver);
     }
 

@@ -1,32 +1,23 @@
 package com.nopcommerce.demo.pages;
 
-import com.nopcommerce.demo.base.BasePage;
+import com.nopcommerce.demo.utilities.Utils;
+import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 
-public class CheckoutCompletedPage extends BasePage {
+public class CheckoutCompletedPage  {
+    private WebDriver driver;
     public CheckoutCompletedPage(WebDriver driver) {
-        super(driver);
+        this.driver = driver;
     }
-    @FindBy(css = ".order-completed-continue-button")
-    private WebElement continueButton;
-    @FindBy(css ="[class = 'section order-completed']")
-    private WebElement successMessage;
-    public void continueButtonClick()
+    private By continueButton = By.cssSelector(".order-completed-continue-button");
+    private By successMessage = By.cssSelector("[class = 'section order-completed']");
+    public void clickOncontinueButton()
     {
-        continueButton.click();
+        Utils.clicking(driver,continueButton);
     }
     public boolean isSucessMessageDisplayed()
     {
-        boolean retStatus = false;
-        try{
-            if(successMessage.isDisplayed())
-                retStatus = true;
-        }catch (NoSuchElementException e){
-            retStatus = false;
-        }
-        return retStatus;
+        return Utils.verifyElementVisible(driver,successMessage);
     }
 }

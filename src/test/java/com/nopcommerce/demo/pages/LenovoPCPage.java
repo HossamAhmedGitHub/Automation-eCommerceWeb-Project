@@ -1,28 +1,27 @@
 package com.nopcommerce.demo.pages;
 
-import com.nopcommerce.demo.base.BasePage;
 import com.nopcommerce.demo.utilities.Utils;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 
-public class LenovoPCPage extends BasePage {
+public class LenovoPCPage {
+    private WebDriver driver;
     public LenovoPCPage(WebDriver driver) {
-        super(driver);
+        this.driver = driver;
     }
-    @FindBy(id="add-to-cart-button-3")
-    private WebElement lenovoPageAddtocartButton;
-    @FindBy(linkText = "shopping cart")
-    private WebElement lenovoPageAddtocartPageLink;
-    public LenovoPCPage lenovoPageAddtocartButtonClick()
+
+    private By lenovoPageAddtocartButton = By.id("add-to-cart-button-3");
+
+    private By lenovoPageAddtocartPageLink = By.linkText("shopping cart");
+    public LenovoPCPage clickOnLenovoPageAddtocartButton()
     {
-        lenovoPageAddtocartButton.click();
+        Utils.clicking(driver, lenovoPageAddtocartButton);
         return this;
     }
     public CartPage lenovoPageAddtocartPageLinkClick()
     {
         Utils.scrollToElement(driver,lenovoPageAddtocartPageLink );
-        lenovoPageAddtocartPageLink.click();
+        Utils.clicking(driver, lenovoPageAddtocartPageLink);
         return new CartPage(driver);
     }
 

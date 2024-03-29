@@ -1,20 +1,23 @@
 package com.nopcommerce.demo.pages;
 
 import com.nopcommerce.demo.base.BasePage;
+import com.nopcommerce.demo.utilities.Utils;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class DesktopsPage extends BasePage {
+public class DesktopsPage {
+    private WebDriver driver;
 
     public DesktopsPage(WebDriver driver) {
-        super(driver);
+        this.driver = driver;
     }
-    @FindBy(linkText = "Lenovo IdeaCentre 600 All-in-One PC")
-    private WebElement lenovoItemIcon;
+
+    private By lenovoItemIcon = By.linkText("Lenovo IdeaCentre 600 All-in-One PC");
     public LenovoPCPage lenovoItemIconClick()
     {
-        lenovoItemIcon.click();
+        Utils.clicking(driver, lenovoItemIcon);
         return new LenovoPCPage(driver);
     }
 }

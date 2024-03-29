@@ -1,76 +1,62 @@
 package com.nopcommerce.demo.pages;
 
-import com.nopcommerce.demo.base.BasePage;
 import com.nopcommerce.demo.utilities.Utils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 
 
-public class CartPage extends BasePage {
+public class CartPage  {
+    private WebDriver driver;
     public CartPage(WebDriver driver) {
-        super(driver);
+
+        this.driver = driver;
     }
-    @FindBy(css=".no-data")
-    private WebElement noItemsLabel;
-    @FindBy(linkText = "HTC One Mini Blue")
-    private WebElement htcMobileItem;
-    @FindBy(linkText = "Nike SB Zoom Stefan Janoski \"Medium Mint\"")
-    private WebElement nikeSBShoesItem;
+
+    private By noItemsLabel = By.cssSelector(".no-data");
+    private By htcMobileItem = By.linkText("HTC One Mini Blue");
+    private By nikeSBShoesItem = By.linkText("Nike SB Zoom Stefan Janoski \"Medium Mint\"");
     private By nikeSBShoesItemElement = By.linkText("Nike SB Zoom Stefan Janoski \"Medium Mint\"");
-    @FindBy(linkText = "Lenovo IdeaCentre 600 All-in-One PC")
-    private WebElement lenovoItem;
-    @FindBy(xpath = "//*[@class='cart']/tbody/tr[1]/td[@class='remove-from-cart']/button")
-    private WebElement nikeDeleteButton;
-    @FindBy(xpath = "//*[@class='cart']/tbody/tr[2]/td[@class='remove-from-cart']/button")
-    private WebElement lenovoDeleteButton;
-    @FindBy(partialLinkText = "Nike Floral Roshe Customized Running Shoes")
-    private WebElement nikeFloralItem;
-    @FindBy(partialLinkText = "Vintage Style Engagement Ring")
-    private WebElement vintageRingItem;
-    @FindBy(id="termsofservice")
-    private WebElement termsofserviceCheckbox;
-    @FindBy(id="checkout")
-    private WebElement checkoutButton;
+    private By lenovoItem = By.linkText("Lenovo IdeaCentre 600 All-in-One PC");
+    private By nikeDeleteButton = By.xpath("//*[@class='cart']/tbody/tr[1]/td[@class='remove-from-cart']/button");
+    private By lenovoDeleteButton = By.xpath("//*[@class='cart']/tbody/tr[2]/td[@class='remove-from-cart']/button");
+    private By nikeFloralItem = By.partialLinkText("Nike Floral Roshe Customized Running Shoes");
+    private By vintageRingItem = By.partialLinkText("Vintage Style Engagement Ring");
+    private By termsofserviceCheckbox = By.id("termsofservice");
+
+    private By checkoutButton = By.id("checkout");
 
     public boolean isnikeSBShoesItemExist(){
+
         return Utils.isElementExist(driver,nikeSBShoesItemElement);
     }
-    public boolean isCartEmpty()
-    {
 
-        return noItemsLabel.isDisplayed();
-    }
     public boolean isHTCAdded()
     {
-        return htcMobileItem.isDisplayed();
+        return Utils.verifyElementVisible(driver,htcMobileItem);
     }
     public boolean isNikeSBShoesAdded()
     {
-        return nikeSBShoesItem.isDisplayed();
+        return Utils.verifyElementVisible(driver,nikeSBShoesItem);
     }
     public void deleteNikeSBShoe(){
-        nikeDeleteButton.click();
+        Utils.clicking(driver,nikeDeleteButton);
     }
-    public void isNikeSBShoeExist(){
-        nikeDeleteButton.click();
-    }
+
     public boolean isLenovoAdded()
     {
-        return lenovoItem.isDisplayed();
+        return Utils.verifyElementVisible(driver,lenovoItem);
     }
     public CartPage deleteNikeLenovoItems() throws InterruptedException {
         try{
-            nikeDeleteButton.click();
-            lenovoDeleteButton.click();
+            Utils.clicking(driver,nikeDeleteButton);
+            Utils.clicking(driver,lenovoDeleteButton);
         }catch (NoSuchElementException e){
             System.out.println("Error: nikeDeleteButton and lenovoDeleteButton not found");
         }
         return this;
     }
-    public boolean areLenoveNikeItemexist()
+    /*public boolean areLenoveNikeItemexist()
     {
         boolean retStatus = true;
         try{
@@ -80,39 +66,23 @@ public class CartPage extends BasePage {
             retStatus = false;
         }
         return  retStatus;
-    }//end isLenoveNikeexist()
-    public boolean isNikeFloralItemDisplayed()
+    }//end isLenoveNikeexist() */
+    public boolean isNikeFloralItemExisted()
     {
-        boolean retStatus = true;
-        try {
-            if(nikeFloralItem.isDisplayed())
-                retStatus=true;
-        }catch (NoSuchElementException e)
-        {
-            retStatus=false;
-        }
-        return  retStatus;
+        return Utils.verifyElementVisible(driver,nikeFloralItem);
     }//end isNikeFloralItemDisplayed()
-    public boolean isVintageRingDisplayed()
+    public boolean isVintageRingExisted()
     {
-        boolean retStatus = true;
-        try {
-            if(vintageRingItem.isDisplayed())
-                retStatus=true;
-        }catch (NoSuchElementException e)
-        {
-            retStatus=false;
-        }
-        return  retStatus;
+        return Utils.verifyElementVisible(driver,nikeFloralItem);
     }//end isVintageRingDisplayed()
     public CartPage termsofserviceCheckboxClick()
     {
-        termsofserviceCheckbox.click();
+        Utils.clicking(driver,termsofserviceCheckbox);
         return this;
     }//end termsofserviceCheckboxClick()
     public BillingPage checkoutButtonClick()
     {
-        checkoutButton.click();
+        Utils.clicking(driver, checkoutButton);
         return new BillingPage(driver);
     }//end checkoutButtonClick()
 

@@ -31,7 +31,8 @@ public class Utils {
         }
     }
 
-    public static void scrollToElement(WebDriver driver, WebElement element) {
+    public static void scrollToElement(WebDriver driver, By by) {
+        WebElement element = Utils.findWebElement(driver,by);
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
     }
 

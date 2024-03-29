@@ -1,58 +1,52 @@
 package com.nopcommerce.demo.pages;
 
-import com.nopcommerce.demo.base.BasePage;
 import com.nopcommerce.demo.utilities.Utils;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 
-public class HomePage extends BasePage {
-
+public class HomePage {
+    private WebDriver driver;
     public HomePage(WebDriver driver)
     {
-        super(driver);
+       this.driver= driver;
     }
-    @FindBy(css = ".ico-logout")
-    private WebElement logoutIcon;
-    @FindBy(css = "ul.top-menu.notmobile > li:nth-child(2) > a")
-    private WebElement electronicsIcon;
-    @FindBy(css = "ul.top-menu.notmobile > li:nth-child(3) > a")
-    private WebElement apparelIcon;
-    @FindBy(css = "ul.top-menu.notmobile > li:nth-child(1) > a")
-    private WebElement computerIcon;
-    @FindBy(css = "ul.top-menu.notmobile > li:nth-child(6) > a")
-    private WebElement jeweleryIcon;
-    @FindBy(css = ".ico-cart")
-    private WebElement cartPageLink;
+    private By logoutIcon = By.cssSelector(".ico-logout");
+    private By electronicsIcon = By.cssSelector("ul.top-menu.notmobile > li:nth-child(2) > a");
+    private By apparelIcon = By.cssSelector("ul.top-menu.notmobile > li:nth-child(3) > a");
+
+    private By computerIcon = By.cssSelector("ul.top-menu.notmobile > li:nth-child(1) > a");
+
+    private By jeweleryIcon = By.cssSelector("ul.top-menu.notmobile > li:nth-child(6) > a");
+    private By cartPageLink = By.cssSelector(".ico-cart");
     public boolean loginVerification()
     {
-        return logoutIcon.isDisplayed();
+        return Utils.verifyElementVisible(driver,logoutIcon);
     }
 
     public ElectronicsPage electronicsIconClick()
     {
-        electronicsIcon.click();
+        Utils.clicking(driver,electronicsIcon);
         return new ElectronicsPage(driver);
     }
-    public ApparelPage apparelIconClick()
+    public ApparelPage clickOnApparelIcon()
     {
-        apparelIcon.click();
+        Utils.clicking(driver,apparelIcon);
         return new ApparelPage(driver);
     }
-    public ComputersPage computerIcon()
+    public ComputersPage clickOnComputerIcon()
     {
-        computerIcon.click();
+        Utils.clicking(driver,computerIcon);
         return new ComputersPage(driver);
     }
-    public CartPage cartPageLinkClick()
+    public CartPage clickOnCartPageLink()
     {
         Utils.scrollToElement(driver,cartPageLink );
-        cartPageLink.click();
+        Utils.clicking(driver,cartPageLink);
         return new CartPage(driver);
     }
     public JewelryPage jeweleryIconClick()
     {
-        jeweleryIcon.click();
+        Utils.clicking(driver,jeweleryIcon);
         return new JewelryPage(driver);
     }
 

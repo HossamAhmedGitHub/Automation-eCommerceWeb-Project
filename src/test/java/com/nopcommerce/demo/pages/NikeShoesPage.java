@@ -1,28 +1,27 @@
 package com.nopcommerce.demo.pages;
 
-import com.nopcommerce.demo.base.BasePage;
 import com.nopcommerce.demo.utilities.Utils;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 
-public class NikeShoesPage extends BasePage {
-
+public class NikeShoesPage  {
+    private WebDriver driver;
     public NikeShoesPage(WebDriver driver) {
-        super(driver);
+
+        this.driver = driver;
     }
-    @FindBy(id="add-to-cart-button-26")
-    private WebElement addToCartNikeItemButton;
-    @FindBy(linkText = "shopping cart")
-    private WebElement cartLink;
-    public NikeShoesPage addToCartNikeItemButtonClick()
+
+    private By addToCartNikeItemButton = By.id("add-to-cart-button-26");
+
+    private By cartLink = By.linkText("shopping cart");
+    public NikeShoesPage clickOnAddToCartNikeItemButton()
     {
-        addToCartNikeItemButton.click();
+        Utils.clicking(driver,addToCartNikeItemButton);
         return this;
     }
-    public CartPage cartLinkClick()
+    public CartPage clicoOnCartLink()
     {
-        cartLink.click();
+        Utils.clicking(driver,cartLink);
         return new CartPage(driver);
     }
 
