@@ -26,7 +26,7 @@ public class WaitsUtils {
     }
 
     //TODO:  Explicit Wait For Clickability
-    public static void explicitlyWaitForClickability(WebDriver driver, By locator) {
+    public static void  explicitlyWaitForClickability(WebDriver driver, By locator) {
         new WebDriverWait(driver, Duration.ofSeconds(Integer.parseInt(getConfigValue("config", "WAIT_EXPLICIT"))))
                 .until(ExpectedConditions.elementToBeClickable(locator));
     }
