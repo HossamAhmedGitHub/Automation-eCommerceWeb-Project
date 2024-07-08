@@ -16,6 +16,6 @@ public class TS1_SignUpTest extends BaseTestCases {
                 .signup(User.getFirstName(),User.getLastName(),User.getEmail(),User.getPassword(),User.getPassword())
                 .clickOnRegisterButton()
                 .verifySignup();
-        Assert.assertTrue(veifySignUp);
+      Assert.assertTrue(veifySignUp);
     }
 }

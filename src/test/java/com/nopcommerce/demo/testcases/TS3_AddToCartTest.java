@@ -54,7 +54,7 @@ public class TS3_AddToCartTest extends BaseTestCases {
         Assert.assertFalse(cartpage.isnikeSBShoesItemExist());
     }//end TC_addToCart_03()
 
-    @Test(enabled = false, description = "veify Adding Item to the shopping cart with different variations or configurations when not setting the options,error message appears ")
+    @Test(description = "veify Adding Item to the shopping cart with different variations or configurations when not setting the options,error message appears ")
     public void TC_addToCart_04()
     {
         Utils.navigateTo(driver , ConfigUtliities.createInstance().getHomeURL());

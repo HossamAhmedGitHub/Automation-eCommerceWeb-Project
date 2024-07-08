@@ -14,7 +14,6 @@ public class HomePage {
     private By electronicsIcon = By.cssSelector("ul.top-menu.notmobile > li:nth-child(2) > a");
     private By apparelIcon = By.cssSelector("ul.top-menu.notmobile > li:nth-child(3) > a");
     private By computerIcon = By.cssSelector("ul.top-menu.notmobile > li:nth-child(1) > a");
-
     private By jeweleryIcon = By.cssSelector("ul.top-menu.notmobile > li:nth-child(6) > a");
     private By cartPageLink = By.cssSelector(".ico-cart");
     public boolean loginVerification()

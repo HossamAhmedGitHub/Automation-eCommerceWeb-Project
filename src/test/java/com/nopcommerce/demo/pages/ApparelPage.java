@@ -11,6 +11,7 @@ public class ApparelPage {
         this.driver = driver;
     }
     private By shoesIcon = By.cssSelector("[title='Show products in category Shoes']");
+    
     public ShoesPage clickOnShoesIcon()
     {
         Utils.clicking(driver,shoesIcon);

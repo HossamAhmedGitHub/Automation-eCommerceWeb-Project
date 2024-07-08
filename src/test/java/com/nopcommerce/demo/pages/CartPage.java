@@ -27,12 +27,10 @@ public class CartPage  {
     private By checkoutButton = By.id("checkout");
 
     public boolean isnikeSBShoesItemExist(){
-
         return Utils.isElementExist(driver,nikeSBShoesItemElement);
     }
 
-    public boolean isHTCAdded()
-    {
+    public boolean isHTCAdded() {
         return Utils.verifyElementVisible(driver,htcMobileItem);
     }
     public boolean isNikeSBShoesAdded()
@@ -56,17 +54,7 @@ public class CartPage  {
         }
         return this;
     }
-    /*public boolean areLenoveNikeItemexist()
-    {
-        boolean retStatus = true;
-        try{
-            if(lenovoItem.isDisplayed() || nikeSBShoesItem.isDisplayed() )
-                retStatus = true;
-        }catch(NoSuchElementException e){
-            retStatus = false;
-        }
-        return  retStatus;
-    }//end isLenoveNikeexist() */
+
     public boolean isNikeFloralItemExisted()
     {
         return Utils.verifyElementVisible(driver,nikeFloralItem);

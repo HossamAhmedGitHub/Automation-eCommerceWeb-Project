@@ -64,6 +64,8 @@ public class Utils {
         } catch (Exception e) {
             return false;
         }
-
+    }
+    public static void tearDown(WebDriver driver){
+        driver.quit();
     }
 }

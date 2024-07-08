@@ -17,6 +17,7 @@ public class BaseTestCases {
     @BeforeMethod
     public void setup()
     {
+
         driver = new DriverFactory().initializeDriver();
     }
     @AfterMethod
@@ -26,8 +27,5 @@ public class BaseTestCases {
         takeScreenshot(destFile,driver);
         driver.quit();
     }
-
-
-
 
 }

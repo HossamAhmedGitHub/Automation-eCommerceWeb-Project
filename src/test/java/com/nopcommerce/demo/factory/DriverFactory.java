@@ -14,7 +14,7 @@ public class DriverFactory {
 
     public WebDriver initializeDriver()
     {
-        String browser = System.getProperty("browser","chrome");
+        String browser = System.getProperty("browser","edge");
         switch (browser){
             case "chrome":
                 WebDriverManager.chromedriver().setup();
