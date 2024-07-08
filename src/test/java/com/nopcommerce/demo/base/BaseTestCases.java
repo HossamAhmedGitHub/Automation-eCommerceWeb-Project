@@ -1,6 +1,7 @@
 package com.nopcommerce.demo.base;
 
 import com.nopcommerce.demo.factory.DriverFactory;
+import com.nopcommerce.demo.utilities.Utils;
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
@@ -25,7 +26,7 @@ public class BaseTestCases {
         String TCname = result.getMethod().getMethodName();
         File destFile = new File ("targets"+File.separator+"screenshos"+File.separator+TCname+".png");
         takeScreenshot(destFile,driver);
-        driver.quit();
+        Utils.tearDown(driver);
     }
 
 }
